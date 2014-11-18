@@ -6,11 +6,34 @@
 
 </body>
 
-<template name="homePage">
+<template name="HomePage">
 	<div class="container">
 		<div class="jumbotron">
 		 	<h1>Pro Football Names</h1>
 		 	<h3>A not so serious look at player names in the NFL</h3>
 	 	</div>
+	 	<div class="playerList">
+				<table class="table table-striped">	
+				<thead>
+					<th>Last Name</th><th>First Name</th><th>Number</th><th>Position</th><th>Status</th><th>Team</th>
+				</thead>
+				<tbody>
+				{{#each player}}
+				<tr class="">
+				<td>{{lastName}}</td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+	 	</div>
  	</div>
 </template>
+
+<template name="PlayerDetails">
+	<div class="container">
+		<div class="jumbotron">
+		 	<h1>Chykie Brown</h1>
+		 	<h3>New York Giants</h3>
+	 	</div>
+ 	</div>
+ </template>
