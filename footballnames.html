@@ -20,7 +20,7 @@
 				<tbody>
 				{{#each player}}
 				<tr class="">
-				<td>{{lastName}}</td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
+				<td><a href="{{pathFor route='PlayerDetails'}}">{{lastName}}</a></td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
 				</tr>
 				{{/each}}
 				</tbody>
@@ -32,8 +32,8 @@
 <template name="PlayerDetails">
 	<div class="container">
 		<div class="jumbotron">
-		 	<h1>Chykie Brown</h1>
-		 	<h3>New York Giants</h3>
+		 	<h1>{{firstName}} {{lastName}}</h1>
+		 	<h3>{{team}}</h3>
 	 	</div>
  	</div>
  </template>
