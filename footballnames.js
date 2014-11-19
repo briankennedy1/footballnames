@@ -9,10 +9,10 @@ Router.route('/:firstName/:lastName/:jerseyNumber', {
   template: 'PlayerDetails',
   name: 'player.show',
   data: function () {
-    return PlayerNameDB.findOne({firstName: this.params.firstName});
+   return PlayerNameDB.findOne({firstName: this.params.firstName});
   }
 });
-Router.route('/:firstName', {
+Router.route('/first/:firstName', {
   template: 'NameDetails',
   name: 'firstName.show',
   data: function () {
@@ -47,10 +47,7 @@ if (Meteor.isClient) {
 
   });
   Template.PlayerDetails.events({
-    'click .firstName' : function(){
-      //var currentFirstName = PlayerNameDB.findOne({firstName: this.params.firstName});
-      console.log("poop");
-    }
+
   });
 
 }

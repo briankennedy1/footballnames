@@ -32,7 +32,7 @@
 <template name="PlayerDetails">
 	<div class="container">
 		<div class="jumbotron">
-		 	<h1><a class="firstName" href="{{pathFor route='firstName.show'}}">{{firstName}}</a> <a href="{{pathFor route='lastName.show'}}">{{lastName}}</a></h1>
+		 	<h1><a class="firstName" href="{{pathFor route='firstName.show'}}">{{firstName}}</a> {{lastName}}</h1>
 		 	<h3>{{position}} &bull; #{{jerseyNumber}}</h3>
 	 	</div>
 
@@ -42,7 +42,7 @@
  <template name="NameDetails">
 	<div class="container">
 		<div class="jumbotron">
-		 	<h1>His name is {{firstName}}</h1>
+		 	<h1>His name is {{firstName}} {{_id}}</h1>
 	 	</div>
 	 		 	<div class="playerList">
 				<table class="table table-striped">	
