@@ -5,13 +5,21 @@ Router.route('/', function () {
   this.render('HomePage');
 });
 
-Router.route('/player/:_id', {
+Router.route('/:firstName/:lastName/:jerseyNumber', {
   template: 'PlayerDetails',
-  name: 'PlayerDetails',
+  name: 'player.show',
   data: function () {
-    return PlayerNameDB.findOne({_id: this.params._id});
+    return PlayerNameDB.findOne({firstName: this.params.firstName});
   }
 });
+Router.route('/:firstName', {
+  template: 'NameDetails',
+  name: 'firstName.show',
+  data: function () {
+    return PlayerNameDB.findOne({firstName: this.params.firstName});
+  }
+});
+
 
 
 if (Meteor.isClient) {
@@ -29,6 +37,20 @@ if (Meteor.isClient) {
       return PlayerNameDB.find({});
     }
 
+  });
+  Template.NameDetails.helpers({
+ 
+    name : function(){
+      return PlayerNameDB.find({});
+    }
+
+
+  });
+  Template.PlayerDetails.events({
+    'click .firstName' : function(){
+      //var currentFirstName = PlayerNameDB.findOne({firstName: this.params.firstName});
+      console.log("poop");
+    }
   });
 
 }
