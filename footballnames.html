@@ -42,7 +42,7 @@
  <template name="NameDetails">
 	<div class="container">
 		<div class="jumbotron">
-		 	<h1>His name is {{firstNameForTemplate}} {{dummy}} {{_id}}</h1>
+		 	<h1>His name is {{firstName}} {{_id}}</h1>
 	 	</div>
 	 		 	<div class="playerList">
 				<table class="table table-striped">	
@@ -50,7 +50,7 @@
 					<th>Last Name</th><th>First Name</th><th>Number</th><th>Position</th><th>Status</th><th>Team</th>
 				</thead>
 				<tbody>
-				{{#each name}}
+				{{#each player}}
 				<tr class="">
 				<td><a href="{{pathFor route='player.show'}}">{{lastName}}</a></td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
 				</tr>
