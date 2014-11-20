@@ -12,11 +12,18 @@ Router.route('/:firstName/:lastName/:jerseyNumber', {
    return PlayerNameDB.findOne({firstName: this.params.firstName});
   }
 });
-Router.route('/first/:firstName', {
+Router.route('/:firstName', {
   template: 'NameDetails',
   name: 'firstName.show',
-  data: function () {
-    return PlayerNameDB.findOne({firstName: this.params.firstName});
+  data: {
+    dummy : function(){
+      return "Dummy!"
+    },
+    firstNameForTemplate : function(){
+      //var firstNameVar = PlayerNameDB.findOne({firstName: this.params.firstName});
+      //return firstNameVar.firstName;
+      return PlayerNameDB.findOne({firstName: this.params.firstName});
+    }
   }
 });
 
@@ -39,15 +46,22 @@ if (Meteor.isClient) {
 
   });
   Template.NameDetails.helpers({
- 
-    name : function(){
+    /* 
+      name : function(){
       return PlayerNameDB.find({});
+    
     }
-
+    */
 
   });
   Template.PlayerDetails.events({
-
+    /*
+      'click a.firstName' : function(event,template){
+      var firstNameVar = template.find('.firstName').innerHTML;
+      console.log(firstNameVar);
+      Session.set("firstNameVar", firstNameVar);
+    }
+    */
   });
 
 }
