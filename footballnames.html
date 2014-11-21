@@ -10,9 +10,16 @@
 	<div class="container">
 		<div class="jumbotron">
 		 	<h1>Pro Football Names</h1>
-		 	<h3>A not so serious look at player names in the NFL</h3>
+		 	<h3>A completely serious look at player names in the NFL</h3>
 	 	</div>
 	 	<div class="playerList">
+	 			<select id="teamSelect" class="form-control">
+	 				<option value="">Select a team</option>
+	 				<option value="All">All</option>
+	 			{{#each teamList}}
+	 				<option value="{{team}}">{{team}}</option>
+	 			{{/each}}
+	 			</select>
 				<table class="table table-striped">	
 				<thead>
 					<th>Last Name</th><th>First Name</th><th>Number</th><th>Position</th><th>Status</th><th>Team</th>
@@ -31,32 +38,11 @@
 
 <template name="PlayerDetails">
 	<div class="container">
-		<div class="jumbotron">
-		 	<h1><a class="firstName" href="{{pathFor route='firstName.show'}}">{{firstName}}</a> {{lastName}}</h1>
+		<div class="jumbotron {{team}}">
+		 	<h1>{{firstName}} {{lastName}}</h1>
 		 	<h3>{{position}} &bull; #{{jerseyNumber}}</h3>
 	 	</div>
 
  	</div>
  </template>
 
- <template name="NameDetails">
-	<div class="container">
-		<div class="jumbotron">
-		 	<h1>His name is {{firstName}} {{_id}}</h1>
-	 	</div>
-	 		 	<div class="playerList">
-				<table class="table table-striped">	
-				<thead>
-					<th>Last Name</th><th>First Name</th><th>Number</th><th>Position</th><th>Status</th><th>Team</th>
-				</thead>
-				<tbody>
-				{{#each player}}
-				<tr class="">
-				<td><a href="{{pathFor route='player.show'}}">{{lastName}}</a></td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
-				</tr>
-				{{/each}}
-				</tbody>
-			</table>
-	 	</div>
- 	</div>
- </template>
