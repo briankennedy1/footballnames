@@ -50,7 +50,7 @@ if (Meteor.isClient) {
       return PlayerNameDB.find({});
     },
     tag : function(){
-      return PlayerNameDB.find({_id: this._id},{ sort: {team: 1}, fields: {tagstwo: true} });
+      return PlayerNameDB.find({_id: this._id});
     }
 
 
@@ -73,9 +73,10 @@ if (Meteor.isClient) {
       PlayerNameDB.update({_id: this._id}, {$addToSet: {tagstwo:tagToAdd}});
         return false;
     },
-    'click #removeTag' : function(){
-      console.log(this._id.tagstwo);
-      //PlayerNameDB.remove(this.tagstwo);
+    'click #removeTag' : function(e){
+      var tag = this.toString();
+      var id = e.currentTarget.name;
+      PlayerNameDB.update({_id: id}, {$pull : {tagstwo : tag}});
     }
 
   });
@@ -86,5 +87,8 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+  });
+  Meteor.methods({
+
   });
 }
