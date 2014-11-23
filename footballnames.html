@@ -41,7 +41,12 @@
 		<div class="jumbotron {{team}}">
 		 	<h1>{{firstName}} {{lastName}}</h1>
 		 	<h3>{{position}} &bull; #{{jerseyNumber}}</h3>
-		 	<h4>Tags: {{tagstwo}}</h4>
+		 	<p>
+		 		<h4>Tags:</h4>
+		 		{{#each tagstwo}}
+		 		<span style="background-color:black;color:white;border:2px solid white;margin:5px;padding:5px;">{{this}}</span>
+		 		{{/each}}
+		 	</p>
 	 	</div>
 	 	<div class="tagInput">
 	 		<form id="addTag">
