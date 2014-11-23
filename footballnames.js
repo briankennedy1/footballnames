@@ -50,7 +50,7 @@ if (Meteor.isClient) {
       return PlayerNameDB.find({});
     },
     tag : function(){
-      return PlayerNameDB.find({_id: this._id});
+      return PlayerNameDB.find({_id: this._id},{ sort: {team: 1}, fields: {tagstwo: true} });
     }
 
 
