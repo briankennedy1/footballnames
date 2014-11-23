@@ -50,8 +50,9 @@ if (Meteor.isClient) {
       return PlayerNameDB.find({});
     },
     tag : function(){
-      return PlayerNameDB.find({_id: this._id},{ fields: {tagstwo: true} });
+      return PlayerNameDB.find({_id: this._id});
     }
+
 
   });
   Template.HomePage.events({
