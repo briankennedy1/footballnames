@@ -1,4 +1,6 @@
 PlayerNameDB = new Meteor.Collection('playerNameDB');
+PlayerTags = new Meteor.Collection('playerTagDB');
+
 /*
   Thinking about making a couple new meteor collections.
   One would be team names so I can just pull them from a collection instead
@@ -46,6 +48,9 @@ if (Meteor.isClient) {
   
     player : function(){
       return PlayerNameDB.find({});
+    },
+    tag : function(){
+      return PlayerNameDB.find({_id: this._id},{ fields: {tagstwo: true} });
     }
 
   });
@@ -57,7 +62,22 @@ if (Meteor.isClient) {
     }
 
   });
+  Template.PlayerDetails.events({
+    'submit #addTag' : function(event, template){
+      var tagToAdd = template.find('#tagField').value.toLowerCase().trim();
+      if (/\s/g.test(tagToAdd) === true) {
+        alert("No white space please") 
+        return false
+      };
+      PlayerNameDB.update({_id: this._id}, {$addToSet: {tagstwo:tagToAdd}});
+        return false;
+    },
+    'click #removeTag' : function(){
+      console.log(this._id.tagstwo);
+      //PlayerNameDB.remove(this.tagstwo);
+    }
 
+  });
 
 
 }

@@ -20,7 +20,7 @@
 	 				<option value="{{team}}">{{team}}</option>
 	 			{{/each}}
 	 			</select>
-				<table class="table table-striped">	
+			<table class="table table-striped">	
 				<thead>
 					<th>Last Name</th><th>First Name</th><th>Number</th><th>Position</th><th>Status</th><th>Team</th>
 				</thead>
@@ -41,8 +41,25 @@
 		<div class="jumbotron {{team}}">
 		 	<h1>{{firstName}} {{lastName}}</h1>
 		 	<h3>{{position}} &bull; #{{jerseyNumber}}</h3>
+		 	<h4>Tags: {{tagstwo}}</h4>
 	 	</div>
-
+	 	<div class="tagInput">
+	 		<form id="addTag">
+ 			<input id="tagField" type="text" placeholder="Add a tag" /><button>Add</button>
+ 		</form>
+ 		<table class="table table-striped">	
+				<thead>
+					<th>Tag</th><th>Remove</th>
+				</thead>
+				<tbody>
+					{{#each tagstwo}}
+						<tr class="">
+							<td>{{tag}}</td><td><button id="removeTag">Remove</button></td>
+						</tr>
+					{{/each}}
+				</tbody>
+		</table>
+ 	</div>
  	</div>
  </template>
 
