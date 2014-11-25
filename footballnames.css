@@ -2,13 +2,23 @@
 .container {
 	padding: 10px;
 }
+.tagLink {
+	background-color:#666;
+	color:white;
+	/* border:1px solid white;*/
+	margin:2px;
+	padding:3px 6px;
+	font-size:80%;
+}
+.tagLink a {
+	color: white;
+}
 .ARI { background-color: #870619; color: #FFFFFF;}
 .ATL { background-color: #BD0D18; color: #DCE0E5;}
 .BAL { background-color: #280353; color: #FFFFFF;}
 .BUF { background-color: #00338D; color: #C60C30;}
 .CAR { background-color: #000000; color: #0088CE;}
 .CHI { background-color: #03202F; color: #DD4814;}
-.CIN { background-color: #000000; color: #FB4F14;}
 .CIN { background-color: #000000; color: #FB4F14;}
 .CLE { background-color: #26201E; color: #E34912;}
 .DAL { background-color: #002244; color: #8C8B8A;}
@@ -31,7 +41,6 @@
 .SDC { background-color: #08214A; color: #EEC607;}
 .SFO { background-color: #AF1E2C; color: #E6BE8A;}
 .SEA { background-color: #06192E; color: #4EAE47;}
-.STL { background-color: #13264B; color: #C9AF74;}
 .STL { background-color: #13264B; color: #C9AF74;}
 .TBB { background-color: #D60A0B; color: #000000;}
 .TEN { background-color: #648FCC; color: #000080;}
