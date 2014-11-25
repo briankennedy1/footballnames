@@ -5,10 +5,12 @@
 <body>
 
 </body>
-
+<template name="Nav">
+	<nav><a href="/">Home</a></nav>
+</template>
 <template name="HomePage">
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron {{homePageStyle}}">
 		 	<h1>Pro Football Names</h1>
 		 	<h3>A completely serious look at player names in the NFL</h3>
 	 	</div>
@@ -31,7 +33,7 @@
 				<tbody>
 				{{#each player}}
 					<tr class="">
-						<td><a href="{{pathFor route='player.show'}}">{{lastName}}</a></td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
+						<td><a href="{{pathFor route='playerDetailsRoute'}}">{{lastName}}</a></td><td>{{firstName}}</td><td>{{jerseyNumber}}</td><td>{{position}}</td><td>{{status}}</td><td>{{team}}</td>
 					</tr>
 				{{/each}}
 				</tbody>
@@ -42,12 +44,13 @@
 
 <template name="PlayerDetails">
 	<div class="container">
+		{{> Nav}}
 		<div class="jumbotron {{team}}">
 		 	<h1>{{firstName}} {{lastName}}</h1>
 		 	<h3>{{position}} &bull; #{{jerseyNumber}}</h3>
 		 	<p>
 		 		{{#each tagstwo}}
-		 		<span class="tagLink"><a href="/tag/{{this}}">{{this}}</a></span>
+		 		<span class="tagLink"><a href="">{{this}}</a></span>
 		 		{{/each}}
 		 	</p>
 	 	</div>
@@ -69,6 +72,27 @@
 				</tbody>
 		</table>
  		
+ 	</div>
+ </template>
+
+ <template name="TagList">
+	<div class="container">
+		{{> Nav}}
+		<div class="jumbotron">
+		 	<h1>All tags!</h1>
+	 	</div>
+ 		<table class="table table-striped">	
+				<thead>
+					<th>Name</th>
+				</thead>
+				<tbody>
+		 			{{#each tagstwo}}
+						<tr class="">
+							<td>{{this}}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+		</table>
  	</div>
  </template>
 

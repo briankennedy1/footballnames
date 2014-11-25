@@ -15,20 +15,25 @@ Router.route('/', function () {
   this.render('HomePage');
 });
 
-Router.route('/:_id/:firstName:lastName:jerseyNumber/', {
+Router.route('/player/:_id', {
+  // Router.route('/:_id/:firstName:lastName:jerseyNumber', {
   template: 'PlayerDetails',
-  name: 'player.show',
+  name: 'playerDetailsRoute',
   data: function () {
    return PlayerNameDB.findOne({_id: this.params._id});
   }
 });
 
+Router.route('/tags', {
+  template: 'TagList',
+  name: 'allTags'
+});
 
 if (Meteor.isClient) {
 
   Template.HomePage.helpers({
     teamList : function(){
-      teamList = TeamNameDB.find({}, {});
+      teamList = TeamNameDB.find({});
       return teamList;
     },
     player : function(){
@@ -36,17 +41,26 @@ if (Meteor.isClient) {
       if (teamName === "All" ) {
         return PlayerNameDB.find({});
       }
-      return PlayerNameDB.find({team:teamName});
+      return PlayerNameDB.find({team:teamName}, { sort: {lastName: 1} });
+    },
+    homePageStyle  : function(){
+      return Session.get("teamName");
     }
-
   });
+
   Template.PlayerDetails.helpers({
-  
     player : function(){
       return PlayerNameDB.find({});
     }
 
   });
+
+  Template.TagList.helpers({
+    player : function(){
+      return PlayerNameDB.find({});
+    }
+  });
+
   Template.HomePage.events({
     'change #teamSelect' : function(event, template){
       var teamName = template.find('#teamSelect').value;
@@ -54,6 +68,7 @@ if (Meteor.isClient) {
     }
 
   });
+
   Template.PlayerDetails.events({
     'submit #addTag' : function(event, template){
       var tagToAdd = template.find('#tagField').value.toLowerCase().trim();
@@ -71,7 +86,6 @@ if (Meteor.isClient) {
     }
 
   });
-
 
 }
 
