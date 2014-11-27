@@ -1,12 +1,17 @@
 PlayerNameDB = new Meteor.Collection('playerNameDB');
-PlayerTags = new Meteor.Collection('playerTagDB');
+PlayerTagsDB = new Meteor.Collection('playerTagDB');
 TeamNameDB = new Meteor.Collection('teamNameDB');
 /*
     A "tags" collection where tags like "feminine" and "cowboy"
     would be stored and INCREMENTED every time someone adds a tag. That way I can
     pull from that DB and say "15 people have the cowboy" tag, but link to the result
-    by pulling from PlayerNameDB and pull the specific players: 
+    by pulling from PlayerNameDB and pull the specific players.
+    
+    To show the value do something like:
+    var searchTags=PlayerTagsDB.find({'violent': search}).count();
+      console.log(searchTags);
 
+    This is the find that can get into a specific field
     PlayerNameDB.find({}, { sort: {team: 1}, fields: {team: true} });
 
 */
@@ -58,7 +63,6 @@ if (Meteor.isClient) {
   Template.TagList.helpers({
     player : function(){
       return PlayerNameDB.find({},{ sort: {tagstwo: 1}});
-      //return PlayerNameDB.find({}, { sort: {tagstwo: -1}, fields: {tagstwo: true} });
     }
   });
 
@@ -73,11 +77,31 @@ if (Meteor.isClient) {
   Template.PlayerDetails.events({
     'submit #addTag' : function(event, template){
       var tagToAdd = template.find('#tagField').value.toLowerCase().trim();
-      if (/\s/g.test(tagToAdd) === true) {
+      if(/\s/g.test(tagToAdd) === true) {
         alert("No white space please") 
+        return false
+      } else if (/\W/g.test(tagToAdd) === true) {
+        alert("Keep it to normal letters.")
+        return false
+      } else if (/\w{3,16}/g.test(tagToAdd) === false) {
+        alert("Too short or too long, you decide.")
         return false
       };
       PlayerNameDB.update({_id: this._id}, {$addToSet: {tagstwo:tagToAdd}});
+      
+      // if tagToAdd already exists in PlayerTagsDB then +1 the number of keywords
+      //  and return false
+      /*
+      if (PlayerTagsDB.find.) {
+
+        alert("This tag already exists")
+        return false
+      };
+      // else insert the tagToAdd and give it a +1
+        
+        alert("Tag added to the DB!")
+      */
+
         return false;
     },
     'click #removeTag' : function(e){
@@ -94,7 +118,8 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-  Meteor.methods({
 
+  Meteor.methods({
+    
   });
 }
