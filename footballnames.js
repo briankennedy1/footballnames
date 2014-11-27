@@ -57,7 +57,8 @@ if (Meteor.isClient) {
 
   Template.TagList.helpers({
     player : function(){
-      return PlayerNameDB.find({});
+      return PlayerNameDB.find({},{ sort: {tagstwo: 1}});
+      //return PlayerNameDB.find({}, { sort: {tagstwo: -1}, fields: {tagstwo: true} });
     }
   });
 
