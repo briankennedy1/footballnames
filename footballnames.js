@@ -62,7 +62,7 @@ if (Meteor.isClient) {
 
   Template.TagList.helpers({
     player : function(){
-      return PlayerNameDB.find({},{ sort: {tagstwo: 1}});
+      return PlayerNameDB.find({},{ sort: {tagstwo: -1}});
     }
   });
 
@@ -89,7 +89,7 @@ if (Meteor.isClient) {
       };
       PlayerNameDB.update({_id: this._id}, {$addToSet: {tagstwo:tagToAdd}});
       
-      // if tagToAdd already exists in PlayerTagsDB then +1 the number of keywords
+      // if tagToAdd already exists in PlayerTagsDB then +1 the number of tags
       //  and return false
       /*
       if (PlayerTagsDB.find.) {
@@ -100,6 +100,8 @@ if (Meteor.isClient) {
       // else insert the tagToAdd and give it a +1
         
         alert("Tag added to the DB!")
+
+        REMOVE NEEDS TO -1 THE NUMBER OF TAGS!
       */
 
         return false;
