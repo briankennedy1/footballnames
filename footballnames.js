@@ -101,7 +101,6 @@ if (Meteor.isClient) {
         
         alert("Tag added to the DB!")
 
-        REMOVE NEEDS TO -1 THE NUMBER OF TAGS!
       */
 
         return false;
@@ -110,6 +109,9 @@ if (Meteor.isClient) {
       var tag = this.toString();
       var id = e.currentTarget.name;
       PlayerNameDB.update({_id: id}, {$pull : {tagstwo : tag}});
+      /* 
+        -1 THE NUMBER OF TAGS!
+      */
     }
 
   });
