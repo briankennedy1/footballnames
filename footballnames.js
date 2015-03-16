@@ -46,7 +46,9 @@ if (Meteor.isClient) {
       if (teamName === "All" ) {
         return PlayerNameDB.find({});
       }
-      return PlayerNameDB.find({team:teamName}, { sort: {lastName: 1} });
+      else {
+        return PlayerNameDB.find({team:teamName}, { sort: {lastName: 1} });
+      }
     },
     homePageStyle  : function(){
       return Session.get("teamName");
